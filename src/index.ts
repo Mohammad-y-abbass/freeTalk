@@ -8,6 +8,13 @@ const app = express();
 express.urlencoded({ extended: false });
 express.json();
 
+declare global {
+  interface CustomeError extends Error {
+    status? : number,
+    
+  }
+}
+
 const start = async () => {
   if (!process.env.MONGO_URI) {
     throw new Error('Please define a MONGO_URI environment variable');

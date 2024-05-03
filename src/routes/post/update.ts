@@ -3,6 +3,6 @@ import { updatePost } from '../../controllers/post/update';
 
 const router = Router();
 
-router.patch('/api/post/:id', updatePost);
+router.patch('/api/post/update/:id', updatePost);
 
 export { router as updatePostRouter };

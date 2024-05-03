@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import Post from '../../models/post';
 
 export const addPost = async (
   req: Request,
@@ -11,5 +12,13 @@ export const addPost = async (
     error.status = 400;
     next(error);
   }
-};
 
+  const newPost = new Post({
+    title,
+    content,
+  });
+
+  await newPost.save();
+
+  res.status(201).json(newPost);
+};

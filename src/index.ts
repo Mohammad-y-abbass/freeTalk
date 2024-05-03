@@ -31,8 +31,15 @@ app.use(
 app.use(addPostRouter);
 app.use(updatePostRouter);
 app.use(deletePostRouter);
+
 app.use(addCommentRouter);
 app.use(deleteCommentRouter);
+
+app.all('*', (req: Request, res: Response, next: NextFunction) => {
+  const error = new Error('Route not found') as CustomError;
+  error.status = 404;
+  next(error);
+});
 
 const start = async () => {
   if (!process.env.MONGO_URI) {

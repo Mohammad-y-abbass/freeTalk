@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { updatePost } from '../../controllers/post/update';
+import { updatePost } from '../../controllers/post/update.js';
 
 const router = Router();
 

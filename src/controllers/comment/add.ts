@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import Comment from '../../models/comment';
+import Comment from '../../models/comment.js';
 
 export const addComment = async (
   req: Request,

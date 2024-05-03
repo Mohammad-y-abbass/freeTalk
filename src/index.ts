@@ -1,5 +1,10 @@
 import express, { Request, Response, NextFunction } from 'express';
 import mongoose from 'mongoose';
+import { addPostRouter } from './routes/post/add.js';
+import { updatePostRouter } from './routes/post/update.js';
+import { deletePostRouter } from './routes/post/delete.js';
+import { addCommentRouter } from './routes/comment/add.js';
+import { deleteCommentRouter } from './routes/comment/delete.js';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -22,6 +27,12 @@ app.use(
     res.status(500).json('something went wrong');
   }
 );
+
+app.use(addPostRouter);
+app.use(updatePostRouter);
+app.use(deletePostRouter);
+app.use(addCommentRouter);
+app.use(deleteCommentRouter);
 
 const start = async () => {
   if (!process.env.MONGO_URI) {
